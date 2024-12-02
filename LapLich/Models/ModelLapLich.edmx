@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLLapLichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GiangVien">
+          <Key>
+            <PropertyRef Name="MaGV" />
+          </Key>
+          <Property Name="MaGV" Type="int" Nullable="false" />
+          <Property Name="TenGV" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LichHoc">
+          <Key>
+            <PropertyRef Name="MaLH" />
+          </Key>
+          <Property Name="MaLH" Type="int" Nullable="false" />
+          <Property Name="MaLHP" Type="int" />
+          <Property Name="MaPhong" Type="int" />
+          <Property Name="NgayHoc" Type="date" />
+          <Property Name="TietBatDau" Type="int" />
+          <Property Name="TietKetthuc" Type="int" />
+          <Property Name="GioTanHoc" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="LopDanhNghia">
+          <Key>
+            <PropertyRef Name="MaLDN" />
+          </Key>
+          <Property Name="MaLDN" Type="int" Nullable="false" />
+          <Property Name="TenLDN" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LopHocPhan">
+          <Key>
+            <PropertyRef Name="MaLHP" />
+          </Key>
+          <Property Name="MaLHP" Type="int" Nullable="false" />
+          <Property Name="MaMH" Type="int" />
+          <Property Name="MaLDN" Type="int" />
+          <Property Name="SiSo" Type="int" />
+          <Property Name="MaGV" Type="int" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="MaMH" />
+          </Key>
+          <Property Name="MaMH" Type="int" Nullable="false" />
+          <Property Name="TenMH" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PhongHoc">
+          <Key>
+            <PropertyRef Name="MaPhong" />
+          </Key>
+          <Property Name="MaPhong" Type="int" Nullable="false" />
+          <Property Name="TenPhong" Type="nvarchar" MaxLength="50" />
+          <Property Name="DayNha" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_LichHoc_LopHocPhan">
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="0..1" />
+          <End Role="LichHoc" Type="Self.LichHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHocPhan">
+              <PropertyRef Name="MaLHP" />
+            </Principal>
+            <Dependent Role="LichHoc">
+              <PropertyRef Name="MaLHP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LichHoc_PhongHoc">
+          <End Role="PhongHoc" Type="Self.PhongHoc" Multiplicity="0..1" />
+          <End Role="LichHoc" Type="Self.LichHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongHoc">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="LichHoc">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_GiangVien">
+          <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiangVien">
+              <PropertyRef Name="MaGV" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_LopDanhNghia">
+          <End Role="LopDanhNghia" Type="Self.LopDanhNghia" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopDanhNghia">
+              <PropertyRef Name="MaLDN" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaLDN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMH" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLLapLichModelStoreContainer">
+          <EntitySet Name="GiangVien" EntityType="Self.GiangVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichHoc" EntityType="Self.LichHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LopDanhNghia" EntityType="Self.LopDanhNghia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LopHocPhan" EntityType="Self.LopHocPhan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhongHoc" EntityType="Self.PhongHoc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LichHoc_LopHocPhan" Association="Self.FK_LichHoc_LopHocPhan">
+            <End Role="LopHocPhan" EntitySet="LopHocPhan" />
+            <End Role="LichHoc" EntitySet="LichHoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LichHoc_PhongHoc" Association="Self.FK_LichHoc_PhongHoc">
+            <End Role="PhongHoc" EntitySet="PhongHoc" />
+            <End Role="LichHoc" EntitySet="LichHoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_GiangVien" Association="Self.FK_LopHocPhan_GiangVien">
+            <End Role="GiangVien" EntitySet="GiangVien" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_LopDanhNghia" Association="Self.FK_LopHocPhan_LopDanhNghia">
+            <End Role="LopDanhNghia" EntitySet="LopDanhNghia" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_MonHoc" Association="Self.FK_LopHocPhan_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhan" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLLapLichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GiangVien">
+          <Key>
+            <PropertyRef Name="MaGV" />
+          </Key>
+          <Property Name="MaGV" Type="Int32" Nullable="false" />
+          <Property Name="TenGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LopHocPhans" Relationship="Self.FK_LopHocPhan_GiangVien" FromRole="GiangVien" ToRole="LopHocPhan" />
+        </EntityType>
+        <EntityType Name="LichHoc">
+          <Key>
+            <PropertyRef Name="MaLH" />
+          </Key>
+          <Property Name="MaLH" Type="Int32" Nullable="false" />
+          <Property Name="MaLHP" Type="Int32" />
+          <Property Name="MaPhong" Type="Int32" />
+          <Property Name="NgayHoc" Type="DateTime" Precision="0" />
+          <Property Name="TietBatDau" Type="Int32" />
+          <Property Name="TietKetthuc" Type="Int32" />
+          <Property Name="GioTanHoc" Type="Time" Precision="7" />
+          <NavigationProperty Name="LopHocPhan" Relationship="Self.FK_LichHoc_LopHocPhan" FromRole="LichHoc" ToRole="LopHocPhan" />
+          <NavigationProperty Name="PhongHoc" Relationship="Self.FK_LichHoc_PhongHoc" FromRole="LichHoc" ToRole="PhongHoc" />
+        </EntityType>
+        <EntityType Name="LopDanhNghia">
+          <Key>
+            <PropertyRef Name="MaLDN" />
+          </Key>
+          <Property Name="MaLDN" Type="Int32" Nullable="false" />
+          <Property Name="TenLDN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LopHocPhans" Relationship="Self.FK_LopHocPhan_LopDanhNghia" FromRole="LopDanhNghia" ToRole="LopHocPhan" />
+        </EntityType>
+        <EntityType Name="LopHocPhan">
+          <Key>
+            <PropertyRef Name="MaLHP" />
+          </Key>
+          <Property Name="MaLHP" Type="Int32" Nullable="false" />
+          <Property Name="MaMH" Type="Int32" />
+          <Property Name="MaLDN" Type="Int32" />
+          <Property Name="SiSo" Type="Int32" />
+          <Property Name="MaGV" Type="Int32" />
+          <NavigationProperty Name="GiangVien" Relationship="Self.FK_LopHocPhan_GiangVien" FromRole="LopHocPhan" ToRole="GiangVien" />
+          <NavigationProperty Name="LichHocs" Relationship="Self.FK_LichHoc_LopHocPhan" FromRole="LopHocPhan" ToRole="LichHoc" />
+          <NavigationProperty Name="LopDanhNghia" Relationship="Self.FK_LopHocPhan_LopDanhNghia" FromRole="LopHocPhan" ToRole="LopDanhNghia" />
+          <NavigationProperty Name="MonHoc" Relationship="Self.FK_LopHocPhan_MonHoc" FromRole="LopHocPhan" ToRole="MonHoc" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="MaMH" />
+          </Key>
+          <Property Name="MaMH" Type="Int32" Nullable="false" />
+          <Property Name="TenMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LopHocPhans" Relationship="Self.FK_LopHocPhan_MonHoc" FromRole="MonHoc" ToRole="LopHocPhan" />
+        </EntityType>
+        <EntityType Name="PhongHoc">
+          <Key>
+            <PropertyRef Name="MaPhong" />
+          </Key>
+          <Property Name="MaPhong" Type="Int32" Nullable="false" />
+          <Property Name="TenPhong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DayNha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LichHocs" Relationship="Self.FK_LichHoc_PhongHoc" FromRole="PhongHoc" ToRole="LichHoc" />
+        </EntityType>
+        <Association Name="FK_LopHocPhan_GiangVien">
+          <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiangVien">
+              <PropertyRef Name="MaGV" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LichHoc_LopHocPhan">
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="0..1" />
+          <End Role="LichHoc" Type="Self.LichHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHocPhan">
+              <PropertyRef Name="MaLHP" />
+            </Principal>
+            <Dependent Role="LichHoc">
+              <PropertyRef Name="MaLHP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LichHoc_PhongHoc">
+          <End Role="PhongHoc" Type="Self.PhongHoc" Multiplicity="0..1" />
+          <End Role="LichHoc" Type="Self.LichHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongHoc">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="LichHoc">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_LopDanhNghia">
+          <End Role="LopDanhNghia" Type="Self.LopDanhNghia" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopDanhNghia">
+              <PropertyRef Name="MaLDN" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaLDN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMH" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLLapLichDataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GiangViens" EntityType="Self.GiangVien" />
+          <EntitySet Name="LichHocs" EntityType="Self.LichHoc" />
+          <EntitySet Name="LopDanhNghias" EntityType="Self.LopDanhNghia" />
+          <EntitySet Name="LopHocPhans" EntityType="Self.LopHocPhan" />
+          <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
+          <EntitySet Name="PhongHocs" EntityType="Self.PhongHoc" />
+          <AssociationSet Name="FK_LopHocPhan_GiangVien" Association="Self.FK_LopHocPhan_GiangVien">
+            <End Role="GiangVien" EntitySet="GiangViens" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LichHoc_LopHocPhan" Association="Self.FK_LichHoc_LopHocPhan">
+            <End Role="LopHocPhan" EntitySet="LopHocPhans" />
+            <End Role="LichHoc" EntitySet="LichHocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LichHoc_PhongHoc" Association="Self.FK_LichHoc_PhongHoc">
+            <End Role="PhongHoc" EntitySet="PhongHocs" />
+            <End Role="LichHoc" EntitySet="LichHocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_LopDanhNghia" Association="Self.FK_LopHocPhan_LopDanhNghia">
+            <End Role="LopDanhNghia" EntitySet="LopDanhNghias" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_MonHoc" Association="Self.FK_LopHocPhan_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLLapLichModelStoreContainer" CdmEntityContainer="QLLapLichDataContext">
+          <EntitySetMapping Name="GiangViens">
+            <EntityTypeMapping TypeName="QLLapLichModel.GiangVien">
+              <MappingFragment StoreEntitySet="GiangVien">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichHocs">
+            <EntityTypeMapping TypeName="QLLapLichModel.LichHoc">
+              <MappingFragment StoreEntitySet="LichHoc">
+                <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+                <ScalarProperty Name="MaLHP" ColumnName="MaLHP" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="NgayHoc" ColumnName="NgayHoc" />
+                <ScalarProperty Name="TietBatDau" ColumnName="TietBatDau" />
+                <ScalarProperty Name="TietKetthuc" ColumnName="TietKetthuc" />
+                <ScalarProperty Name="GioTanHoc" ColumnName="GioTanHoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LopDanhNghias">
+            <EntityTypeMapping TypeName="QLLapLichModel.LopDanhNghia">
+              <MappingFragment StoreEntitySet="LopDanhNghia">
+                <ScalarProperty Name="MaLDN" ColumnName="MaLDN" />
+                <ScalarProperty Name="TenLDN" ColumnName="TenLDN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LopHocPhans">
+            <EntityTypeMapping TypeName="QLLapLichModel.LopHocPhan">
+              <MappingFragment StoreEntitySet="LopHocPhan">
+                <ScalarProperty Name="MaLHP" ColumnName="MaLHP" />
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="MaLDN" ColumnName="MaLDN" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="QLLapLichModel.MonHoc">
+              <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="TenMH" ColumnName="TenMH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhongHocs">
+            <EntityTypeMapping TypeName="QLLapLichModel.PhongHoc">
+              <MappingFragment StoreEntitySet="PhongHoc">
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+                <ScalarProperty Name="DayNha" ColumnName="DayNha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

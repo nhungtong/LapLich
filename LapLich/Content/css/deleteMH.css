@@ -1,0 +1,81 @@
+﻿/* Toàn bộ nội dung xóa */
+div {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề h2 */
+h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #dc3545; /* Màu đỏ để cảnh báo */
+    font-weight: bold;
+}
+
+/* Dòng thông báo */
+h3 {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Thông tin chi tiết */
+dl.dl-horizontal dt {
+    font-weight: bold;
+    color: #555;
+    width: 30%;
+    float: left;
+    clear: left;
+}
+
+dl.dl-horizontal dd {
+    margin-left: 35%;
+    color: #333;
+}
+
+/* Đường phân cách */
+hr {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Nút Delete */
+input[type="submit"] {
+    font-size: 16px;
+    color: #fff;
+    background-color: #dc3545;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    input[type="submit"]:hover {
+        background-color: #c82333;
+    }
+
+/* Liên kết Back to List */
+a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Khoảng cách giữa các nút */
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}

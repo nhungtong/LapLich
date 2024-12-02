@@ -1,0 +1,116 @@
+﻿/* Định dạng thanh điều hướng */
+body {
+    background-color: #f4f4f9;
+
+}
+
+/* Định dạng thanh điều hướng */
+nav {
+    background: #0277BD; /* Màu xanh dương đậm */
+    position: relative;
+    margin-bottom: 10px; /* Thêm khoảng cách bên dưới menu */
+    height: 45px;
+}
+
+/* Hình ảnh banner */
+.image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Danh sách menu chính */
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 40px;
+    white-space: nowrap; /* Đảm bảo các phần tử menu không bị chia thành nhiều dòng */
+}
+
+    nav ul li {
+        position: relative;
+        border-right: solid #FFF 1px;
+        float: left;
+        margin: 0;
+        width: auto; /* Tự động điều chỉnh độ rộng của các mục */
+        text-align: center;
+        display: inline-block; /* Đảm bảo các mục hiển thị trên một hàng */
+    }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #FFF; /* Màu chữ trắng */
+            padding: 0 15px; /* Điều chỉnh padding cho đẹp mắt */
+            line-height: 40px;
+            display: block;
+            font-variant: small-caps;
+        }
+
+            /* Hiệu ứng hover trên menu chính */
+            nav ul li a:hover {
+                color: #FFEB3B; /* Màu vàng nhạt khi hover */
+                background: #0288D1; /* Màu xanh dương sáng khi hover */
+                font-weight: bolder;
+            }
+
+    /* Hiển thị menu con khi hover */
+    nav ul > li:hover > ul {
+        display: block;
+    }
+
+/* Định dạng menu con */
+ul.vmenu {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    list-style: none;
+    position: absolute;
+    display: none;
+    background-color: #A5D6A7; /* Màu xanh lá cây nhạt */
+    top: 40px;
+}
+
+    ul.vmenu li {
+        margin-top: 0;
+        border-bottom: solid 1px #FFF;
+        position: relative;
+        width: 250px;
+    }
+
+        ul.vmenu li a {
+            display: block;
+            line-height: 40px;
+            border-bottom: 1px dotted #0277BD; /* Viền xanh dương đậm */
+            text-decoration: none;
+            font-variant: small-caps;
+            color: #FFF;
+            padding-left: 15px;
+            background-color: #388E3C; /* Màu xanh lá cây đậm */
+        }
+
+    /* Hiệu ứng hover trên menu con */
+    ul.vmenu a:hover {
+        background-color: #FFEB3B; /* Màu vàng khi hover */
+        font-weight: bolder;
+        color: #333; /* Màu chữ đen */
+    }
+
+/* Phần chào người dùng */
+nav .chao {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+    nav .chao a {
+        margin-right: 10px;
+        color: #FFF; /* Màu trắng */
+        text-decoration: none;
+    }
+
+
+}

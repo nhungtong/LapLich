@@ -1,0 +1,42 @@
+﻿@model IEnumerable<LapLich.Models.GiangVien>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/css/indexMH.css" rel="stylesheet" />
+
+<h1>THÔNG TIN GIẢNG VIÊN</h1>
+<div class="content-area">
+    <p>
+        <a href="@Url.Action("Create", "GiangViens")">CREATE NEW</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaGV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenGV)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaGV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenGV)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaGV }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaGV }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaGV })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

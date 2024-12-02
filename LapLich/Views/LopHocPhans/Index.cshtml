@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LapLich.Models.LopHocPhan>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/css/indexMH.css" rel="stylesheet" />
+<h1>THÔNG TIN LỚP HỌC PHẦN</h1>
+<div class="content-area"
+    <p>
+        <a href="@Url.Action("Create", "LopHocPhans")">CREATE NEW</a>
+
+
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaLHP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiSo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiangVien.TenGV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LopDanhNghia.TenLDN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonHoc.TenMH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaLHP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiSo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiangVien.TenGV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LopDanhNghia.TenLDN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonHoc.TenMH)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaLHP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaLHP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaLHP })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>

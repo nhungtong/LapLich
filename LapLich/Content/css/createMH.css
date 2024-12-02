@@ -1,0 +1,96 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+.form-horizontal {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    .form-horizontal h4 {
+        text-align: center;
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.control-label {
+    flex: 0 0 20%;
+    font-weight: bold;
+    color: #555;
+}
+
+.col-md-10 {
+    flex: 1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+.text-danger {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.btn-default {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+    .btn-default:hover {
+        background-color: #0056b3;
+    }
+
+div > a {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+    div > a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }

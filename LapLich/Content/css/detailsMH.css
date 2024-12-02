@@ -1,0 +1,69 @@
+﻿/* Toàn bộ nội dung chi tiết */
+div {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề h2 */
+h2 {
+    font-size: 24px;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Tiêu đề thông tin (h4) */
+h4 {
+    font-size: 20px;
+    color: #333;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Đường phân cách */
+hr {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Định dạng phần thông tin chi tiết */
+dl.dl-horizontal dt {
+    font-weight: bold;
+    color: #555;
+    width: 30%;
+    float: left;
+    clear: left;
+    margin-bottom: 10px;
+}
+
+dl.dl-horizontal dd {
+    margin-left: 35%;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Liên kết (Edit, Back to List) */
+p a {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+    p a:hover {
+        text-decoration: underline;
+        color: #0056b3;
+    }
+
+/* Khoảng cách giữa các liên kết */
+p {
+    text-align: center;
+    margin-top: 20px;
+}

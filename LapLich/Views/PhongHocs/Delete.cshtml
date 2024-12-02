@@ -1,0 +1,39 @@
+﻿@model LapLich.Models.PhongHoc
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Bạn có chắc chắn muốn xóa không?</h3>
+<div>
+    <h4>PhongHoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPhong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayNha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayNha)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
